@@ -3,7 +3,7 @@ from urllib.parse import urlencode
 import requests
 import xmltodict
 
-from preston.xmlapi.cache import Cache
+from .preston.xmlapi.cache import Cache
 
 
 __all__ = ['Preston']
@@ -101,7 +101,7 @@ class Path:
         url += '?' + urlencode(kwargs)
         if self.key and self.code:
             url += '&' + urlencode({'keyID': self.key, 'vCode': self.code})
-        print
+        print()
         cached = self.cache.get(url)
         if cached:
             return cached

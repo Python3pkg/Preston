@@ -6,7 +6,7 @@ import time
 
 import requests
 
-from preston.esi.cache import Cache
+from .preston.esi.cache import Cache
 
 
 base_url = 'https://esi.tech.ccp.is/'
@@ -341,7 +341,7 @@ class Page:
             '/' + self.endpoint +
             ('/{}/'.format(value) if value else '/') +
             '?' + '&'.join(
-                ['{}={}'.format(key, value) for key, value in kwargs.items()]
+                ['{}={}'.format(key, value) for key, value in list(kwargs.items())]
             )
         )
         cached = self.cache.check(url)

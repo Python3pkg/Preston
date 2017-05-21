@@ -6,8 +6,8 @@ import time
 
 import requests
 
-from preston.crest.errors import *
-from preston.crest.cache import *
+from .preston.crest.errors import *
+from .preston.crest.cache import *
 
 
 base_url = 'https://crest-tq.eveonline.com/'
@@ -484,7 +484,7 @@ class APIElement:
         if not isinstance(self.data, collections.Iterable):
             raise CRESTException('Can not iterate on an ' + str(type(self.data)))
         for element in self.data:
-            if all(element[key] == value for key, value in kwargs.items()):
+            if all(element[key] == value for key, value in list(kwargs.items())):
                 if type(element) in (dict, list):
                     return APIElement(self.url, element, self._preston)
                 return element

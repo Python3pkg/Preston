@@ -142,7 +142,7 @@ class Cache:
         Returns:
             value (int) of the number of keys in the data
         """
-        return len(self.data.keys())
+        return len(list(self.data.keys()))
 
 
 class Page:
